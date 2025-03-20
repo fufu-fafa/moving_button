@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <title>question</title>
+  <style>
+    body {
+      color: white;
+      background-color: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: monospace, Helvetica, sans-serif;
+      overflow: hidden;
+      position: relative;
+      touch-action: manipulation;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      z-index: 1;
+    }
+    .button-container {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    button {
+      font-family: monospace, Helvetica, sans-serif;
+      height: 2.4rem;
+      padding: 0 20px; 
+      border: none;
+      background-color: #2b2b2b;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <h1>does she like me?</h1>
+  <div class="button-container">
+    <button id="moveButton">no</button>
+    <button id="staticButton" onclick="window.location.href='./continue'">yes</button>
+  </div>
+
+  <script>
+    const moveButton = document.getElementById("moveButton");
+
+    function moveButtonRandomly() {
+      const maxX = window.innerWidth - moveButton.clientWidth;
+      const maxY = window.innerHeight - moveButton.clientHeight - 50;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      moveButton.style.position = "absolute";
+      moveButton.style.left = `${x}px`;
+      moveButton.style.top = `${y}px`;
+    }
+
+    moveButton.addEventListener("click", moveButtonRandomly);
+    moveButton.addEventListener("mouseover", moveButtonRandomly);
+  </script>
+</body>
+</html>
