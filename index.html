@@ -59,8 +59,18 @@
 
   <script>
     const moveButton = document.getElementById("moveButton");
+    let firstInteraction = true;
 
     function moveButtonRandomly() {
+      if (firstInteraction) {
+        firstInteraction = false;
+        setTimeout(() => moveButtonNow(), 200); // Delay only the first time
+      } else {
+        moveButtonNow();
+      }
+    }
+
+    function moveButtonNow() {
       const maxX = window.innerWidth - moveButton.clientWidth;
       const maxY = window.innerHeight - moveButton.clientHeight - 50;
 
