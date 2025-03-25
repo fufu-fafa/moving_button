@@ -64,7 +64,11 @@
     function moveButtonRandomly() {
       if (firstInteraction) {
         firstInteraction = false;
-        setTimeout(() => moveButtonNow(), 200); // Delay only the first time
+        setTimeout(() => {
+          moveButtonNow();
+          moveButton.addEventListener("click", moveButtonNow); // Enable normal behavior
+        }, 50); // Delay only for the first interaction
+        moveButton.removeEventListener("click", moveButtonRandomly); // Prevent duplicate move
       } else {
         moveButtonNow();
       }
